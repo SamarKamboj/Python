@@ -26,43 +26,32 @@ scissor = """
       (____)
 ---.__(___)
 """
+infinite = 0
+while infinite == 0:
+    userInput = int(input('What do you choose? Type 0 for Rock, 1 for Paper and 2 for Scissors.\n'))
+    rpsList = [rock, paper, scissor]
 
-rps = int(input('What do you choose? Type 0 for Rock, 1 for Paper and 2 for Scissors.\n'))
-rpsList = [rock, paper, scissor]
-result = ["You win!", "You loose!", "Draw!"]
+    userArt = rpsList[userInput]
+    print(userArt)
 
-user = rpsList[rps]
-print(user)
+    comprps = random.randint(0,2)
+    computerArt = rpsList[comprps]
+    for x in range(3):
+        if x == comprps:
+            print(f"Computer Chose: {computerArt}")
 
-comprps = rpsList[random.randint(0,2)]
-if (comprps == rock):
-  print("Computer Chose: Rock")
-elif (comprps == paper):
-  print("Computer Chose: Paper")
-elif (comprps == scissor):
-  print("Computer Chose: Scissor")
-print(comprps)
 
-# Rock
-if (user == rock) and (comprps == scissor):
-  print(result[0])
-elif (user == rock) and (comprps == paper):
-  print(result[1])
-elif (user == rock) and (comprps == rock):
-  print(result[2])
+    if userInput > comprps:
+        if userInput == 2 and comprps == 0:
+            print("You loose!")
+        else:
+            print("You win!")
 
-# Paper
-elif (user == paper) and (comprps == rock):
-  print(result[0])
-elif (user == paper) and (comprps == scissor):
-  print(result[1])
-elif (user == paper) and (comprps == paper):
-  print(result[2])
-
-# Scissor
-elif (user == scissor) and (comprps == paper):
-  print(result[0])
-elif (user == scissor) and (comprps == rock):
-  print(result[1])
-elif (user == scissor) and (comprps == scissor):
-  print(result[2])
+    elif userInput < comprps:
+        if userInput == 0 and comprps == 2:
+            print("You win!")
+        else:
+            print("You loose!")
+    
+    else:
+        print("Draw!")
