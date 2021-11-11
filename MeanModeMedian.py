@@ -1,10 +1,12 @@
 from random import randint
 
-num = []
+num = []  # --> Empty list
+# 'num' list in ascending order
 ascOrder = []   # ascOrder --> Ascending Order 
-
-for i in range(10):
-    num.append(randint(1, 100)) 
+# If range is even then total numbers are even else odd.
+for i in range(10):  
+   num.append(randint(1, 100))
+# Arrange in ascending order or we can use sort() in-built function.
 while num:
     maximum = 100
     for x in num:
@@ -18,17 +20,23 @@ def mean():
     for x in ascOrder:
         meanValue += x
 
-    meanValue = meanValue / len(ascOrder)
+    meanValue = round(meanValue / len(ascOrder), 1)
     return "The mean of this list is " + str(meanValue)
 
 
 def median():
-    # If total number in list are even 
-    firstPosi = int(len(ascOrder)/2)
-    secondPosi = int((len(ascOrder)/2) + 1)
-    firstValue = ascOrder[firstPosi-1]
-    secondValue = ascOrder[secondPosi-1]
-    return "The median in this list is " + str((firstValue + secondValue)/2)
+    # For Even
+    if len(ascOrder) % 2 == 0:
+        x = int(len(ascOrder)/2)
+        y = int((len(ascOrder)/2) + 1)
+        firstValue = ascOrder[x-1]
+        secondValue = ascOrder[y-1]
+        return "The median in this list is " + str((firstValue + secondValue)/2)
+    # For Odd
+    else:
+        z = int((len(ascOrder)/2) + 1)
+        value = ascOrder[z-1]
+        return "The median in this list is " + str(value)
 
 
 def Mode():
