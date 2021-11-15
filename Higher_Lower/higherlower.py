@@ -47,9 +47,9 @@ while end:
         print(f"Sorry that's wrong. Final score {score}")
         end = False
         
-#############################################################################################
+############################################################
 
-## For better experience use this code in replit.com
+## For better experience use below code in replit.com
 
 # from random import randint
 # from game_data import data
