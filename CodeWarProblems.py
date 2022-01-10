@@ -42,12 +42,14 @@ def longest(a1, a2):
 def accum(s):
     List1 = list((s.lower()))
     List2 = []
-    for i in List1:
-        char = ''
-        for _ in range(List1.index(i)+1):
-            char += i
-        List2.append(char.capitalize())
+    x = 0
+    while x < len(s):
+        for i in List1:
+            char = ''
+            for j in range(x+1):
+                char += i
+            List2.append(char.capitalize())
+            List1.pop(0)
+            x += 1
     List2 = "-".join(List2)
     return (List2)
-
-print(accum("HbideVbxncC"))
