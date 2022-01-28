@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-x = [*range(1, 101)]
+x = [*range(1, 10001)]
 y = []
 
 for i in x:
