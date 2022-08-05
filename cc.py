@@ -9,8 +9,8 @@ def solve():
     arr = [int(i) for i in input().split()]
 
 
-    #while True:
-        #s = 0
+    while True:
+        s = 0
         for i in range(arr_len-1):
             smaller = 0
             for j in range(0, arr_len):
@@ -21,8 +21,8 @@ def solve():
                 arr[i], arr[smaller]= arr[smaller], arr[i]
                 s += 1
 
-        #if s == 0:
-            #break
+        if s == 0:
+            break
 
     if sorted(arr) == arr:
         return "Yes"
