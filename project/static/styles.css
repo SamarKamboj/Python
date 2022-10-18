@@ -1,0 +1,25 @@
+.chart-container {
+    text-align: left;
+    position: relative;
+    margin: auto;
+    height: 80%;
+    width: 80%;
+}
+
+.btn-light {
+    padding-bottom: 0!important;
+    padding-top: 0!important;
+}
+
+.btn-danger {
+    position: relative!important;
+}
+
+.remove-stock {
+    text-align: right;
+    float: right;
+}
+
+td {
+    text-align: center;
+}

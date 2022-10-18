@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <form action="/" method="post">
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" autocomplete="off" autofocus name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+    </form>
+    <!-- <div class="mb-3"></div> -->
+
+    <!-- <form action="/remove" method="post">
+        <div class="">
+            <ul>
+                <li class="inline"></li>
+            </ul>
+        </div>
+        <input type="submit" value="Remove">
+    </form> -->
+
+    <div class="chart-container">
+        <ul class="list-inline">
+            <form action="/time" method="post">
+            {% for time in time_period %}
+                <li class="list-inline-item">
+                    <button type="submit" class="btn btn-light" name="time" value="{{ time }}">{{ time }}</button>
+                </li>
+            {% endfor %}
+            </form>
+        </ul>
+    </div>
+
+    <div class="remove-stock">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td><h5>Remove</h5></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name in names %}
+                <tr>
+                    <td>
+                        <form action="/remove" method="post">
+                            <button class="btn btn-danger" name="symbol" type="submit" value="{{ name }}">{{ name }}</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script>
+        const ctx = document.getElementById('myChart').getContext("2d");
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ dates | safe }},
+                datasets: [
+                    {% for name, data in namePrice.items() %}
+                    {
+                        label: "{{ name }}",
+                        data: {{ data['close'] | tojson }},
+                        borderColor: "{{ data['rgb'] }}",
+                        // lineTension: 0.3,
+                    },
+                    {% endfor %}
+                ],
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Stocks"
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                    }
+                }
+            }
+            
+        });
+    </script>
+{% endblock %}
