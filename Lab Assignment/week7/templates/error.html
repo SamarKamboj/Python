@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Something went wrong</title>
+</head>
+<body>
+
+    {% if val == 'student_exist' %}
+    <p>Student already exists. Please use different roll number!</p>
+    <a href="/">Go Home</a>
+    {% elif val == 'no-record' %}
+    <p>No record found.</p>
+    <a href="/">Go Home</a>
+    {% elif val == 'course_exist' %}
+    <p>Course already exists. Please create a different course!</p>
+    <a href="/courses">Go Home</a>
+    {% endif %}
+</body>
+</html>
